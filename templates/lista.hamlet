@@ -1,0 +1,5 @@
+<h1> Pessoas cadastradas:
+    $forall Entity pid pessoa <- listaP
+        <a href=@{PessoaR pid}> #{pessoaNome pessoa} 
+            <form method=post action=@{PessoaR pid}> 
+                <input type="submit" value="Deletar"><br>

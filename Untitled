@@ -1,0 +1,15 @@
+dptos = do
+       
+    entidades <- runDB $ selectList [] [Asc DepartamentoNome] 
+       optionsPairs $ fmap f entidades
+
+f ent = (departamentoSigla $ entityVal ent, entityKey ent)
+
+entidades <- [Entity (Key 2) (Departamento "Anal e desenv de sist." "ADS"),
+ Entity (Key 1) (Departamento "Gestao emp." "GE"),
+ Entity (Key 4) (Departamento "Logistica" "LOG"),
+ Entity (Key 3) (Departamento "Sist p internet." "SI")
+]
+
+f (Entity (Key 2) (Departamento "Anal e desenv de sist.")) =
+[("ADS",Key 2),("GE",Key 1),("LOG",Key 4),("SI",Key 3)]
